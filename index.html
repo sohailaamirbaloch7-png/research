@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dental Research | Belleville Dental</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+<style>
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  section{padding:70px 0}
+  .bg-soft{background:#f2f7ff}
+  .topic-card{cursor:pointer;transition:.2s}
+  .topic-card:hover{transform:translateY(-4px);box-shadow:0 8px 20px rgba(13,110,253,.15)}
+  .doc-img{width:100%;height:300px;object-fit:cover;object-position:top}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-primary" href="#home">Belleville Dental</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#topics">Research Topics</a></li>
+        <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+        <li class="nav-item"><a class="nav-link" href="#team">Research Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="#appointment">Book Appointment</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="home" class="bg-soft" style="padding:110px 0 60px">
+  <div class="container">
+    <h1 class="fw-bold">Evidence-based dental care, <span class="text-primary">backed by research.</span></h1>
+    <p class="lead text-muted">Explore our research, meet our team and book your visit online.</p>
+    <a href="#appointment" class="btn btn-primary me-2">Book Appointment</a>
+    <a href="#topics" class="btn btn-outline-primary">Explore Research</a>
+  </div>
+</header>
+
+<!-- RESEARCH TOPICS -->
+<section id="topics">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-2">Research Topics</h2>
+    <p class="text-center text-muted mb-4">Click any topic to read more.</p>
+    <div class="row g-4" id="topicGrid"></div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="bg-soft">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-4">Research Publications</h2>
+    <div class="row g-3 mb-4">
+      <div class="col-md-5"><input type="search" id="pubSearch" class="form-control" placeholder="Search title, author or journal..."></div>
+      <div class="col-6 col-md-4"><select id="pubTopic" class="form-select"></select></div>
+      <div class="col-6 col-md-3">
+        <select id="pubSort" class="form-select">
+          <option value="new">Newest first</option>
+          <option value="old">Oldest first</option>
+        </select>
+      </div>
+    </div>
+    <div class="row g-4" id="pubGrid"></div>
+    <p class="text-center text-muted mt-4 d-none" id="pubEmpty">No publications found.</p>
+  </div>
+</section>
+
+<!-- =====================================================
+     RESEARCH TEAM - BASIC CARDS
+     Photo badalne ke liye sirf src="..." badlein.
+     Naam badalne ke liye alt aur <h5 class="doc-name"> badlein.
+     data-id (d1-d6) ko na badlein.
+     data-topics: implants, gum, whitening, oral-cancer, ortho, decay
+     ===================================================== -->
+<section id="team">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-2">Our Research Team</h2>
+    <p class="text-center text-muted mb-4">Senior clinicians and researchers leading our studies.</p>
+
+    <div class="row g-4">
+
+      <!-- DOCTOR 1 (HEAD) -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 doc" data-id="d1" data-topics="gum,decay">
+          <img class="doc-img" src="./images/dr-ayesha.png" alt="Dr. Ayesha Rahman">
+          <div class="card-body">
+            <span class="badge bg-primary mb-2">Head of Research</span>
+            <h5 class="doc-name card-title">Dr. Ayesha Rahman</h5>
+            <p class="text-primary small mb-1">Head of Research &amp; Clinical Director</p>
+            <p class="text-muted small mb-2">BDS, FCPS (Periodontology), PhD &bull; 22 yrs experience</p>
+            <p class="card-text small">Leads the research programme and oversees clinical trials. Special interest in periodontal medicine and preventive dentistry.</p>
+            <p class="small text-muted">Topics: Gum Disease, Tooth Decay</p>
+            <button class="btn btn-outline-primary btn-sm w-100" data-book-doc="d1">Book with Dr. Ayesha</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCTOR 2 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 doc" data-id="d2" data-topics="implants">
+          <img class="doc-img" src="./images/dr hamza.png" alt="Dr. Hamza Qureshi">
+          <div class="card-body">
+            <h5 class="doc-name card-title">Dr. Hamza Qureshi</h5>
+            <p class="text-primary small mb-1">Senior Consultant, Implantology</p>
+            <p class="text-muted small mb-2">BDS, MDS (Prosthodontics) &bull; 18 yrs experience</p>
+            <p class="card-text small">Senior implant surgeon researching bone healing and guided implant placement.</p>
+            <p class="small text-muted">Topics: Dental Implants</p>
+            <button class="btn btn-outline-primary btn-sm w-100" data-book-doc="d2">Book with Dr. Hamza</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCTOR 3 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 doc" data-id="d3" data-topics="ortho">
+          <img class="doc-img" src="./images/dr sana malik.png" alt="Dr. Sana Malik">
+          <div class="card-body">
+            <h5 class="doc-name card-title">Dr. Sana Malik</h5>
+            <p class="text-primary small mb-1">Senior Consultant, Orthodontics</p>
+            <p class="text-muted small mb-2">BDS, MCPS, FCPS (Orthodontics) &bull; 16 yrs experience</p>
+            <p class="card-text small">Focuses on clear-aligner outcomes and digital treatment planning for teens and adults.</p>
+            <p class="small text-muted">Topics: Orthodontics</p>
+            <button class="btn btn-outline-primary btn-sm w-100" data-book-doc="d3">Book with Dr. Sana</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCTOR 4 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 doc" data-id="d4" data-topics="oral-cancer,implants">
+          <img class="doc-img" src="./images/dr imran.png" alt="Dr. Imran Siddiqui">
+          <div class="card-body">
+            <h5 class="doc-name card-title">Dr. Imran Siddiqui</h5>
+            <p class="text-primary small mb-1">Consultant, Oral &amp; Maxillofacial Surgery</p>
+            <p class="text-muted small mb-2">BDS, FCPS (OMFS) &bull; 15 yrs experience</p>
+            <p class="card-text small">Leads our oral cancer screening and early-detection project.</p>
+            <p class="small text-muted">Topics: Oral Cancer, Dental Implants</p>
+            <button class="btn btn-outline-primary btn-sm w-100" data-book-doc="d4">Book with Dr. Imran</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCTOR 5 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 doc" data-id="d5" data-topics="whitening,decay">
+          <img class="doc-img" src="./images/dr mariam.png" alt="Dr. Mariam Farooq">
+          <div class="card-body">
+            <h5 class="doc-name card-title">Dr. Mariam Farooq</h5>
+            <p class="text-primary small mb-1">Consultant, Restorative &amp; Aesthetic Dentistry</p>
+            <p class="text-muted small mb-2">BDS, MSc (Restorative Dentistry) &bull; 12 yrs experience</p>
+            <p class="card-text small">Researches enamel-safe whitening and minimally invasive restorations.</p>
+            <p class="small text-muted">Topics: Teeth Whitening, Tooth Decay</p>
+            <button class="btn btn-outline-primary btn-sm w-100" data-book-doc="d5">Book with Dr. Mariam</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- DOCTOR 6 -->
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100 doc" data-id="d6" data-topics="decay,oral-cancer">
+          <img class="doc-img" src="./images/dr bilal .png" alt="Dr. Bilal Ahmed">
+          <div class="card-body">
+            <h5 class="doc-name card-title">Dr. Bilal Ahmed</h5>
+            <p class="text-primary small mb-1">Research Fellow, Public Oral Health</p>
+            <p class="text-muted small mb-2">BDS, MPH &bull; 8 yrs experience</p>
+            <p class="card-text small">Runs community oral-health surveys and school-based prevention studies.</p>
+            <p class="small text-muted">Topics: Tooth Decay, Oral Cancer</p>
+            <button class="btn btn-outline-primary btn-sm w-100" data-book-doc="d6">Book with Dr. Bilal</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section id="appointment" class="bg-soft">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5">
+        <h2 class="fw-bold">Book your visit</h2>
+        <p class="text-muted">Choose a doctor, date and time. Bookings are saved in this browser.</p>
+        <p class="small text-muted mb-1">Mon&ndash;Sat, 9:00 AM &ndash; 5:00 PM (closed Sunday)</p>
+        <p class="small text-muted mb-1">[YOUR PHONE]</p>
+        <p class="small text-muted">[YOUR ADDRESS]</p>
+
+        <h6 class="fw-bold mt-4 d-flex justify-content-between">
+          Your bookings
+          <button class="btn btn-sm btn-link text-danger p-0" id="clearAppts">Clear all</button>
+        </h6>
+        <div id="apptList" class="d-grid gap-2"></div>
+      </div>
+
+      <div class="col-lg-7">
+        <form class="card card-body needs-validation" id="apptForm" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label" for="fName">Full name</label>
+              <input class="form-control" id="fName" required minlength="3">
+              <div class="invalid-feedback">Enter your full name.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fPhone">Phone</label>
+              <input class="form-control" id="fPhone" type="tel" required pattern="[0-9+\-\s]{10,15}" placeholder="03XX-XXXXXXX">
+              <div class="invalid-feedback">Enter a valid phone.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fEmail">Email</label>
+              <input class="form-control" id="fEmail" type="email" required>
+              <div class="invalid-feedback">Enter a valid email.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fTopic">Concern</label>
+              <select class="form-select" id="fTopic" required></select>
+              <div class="invalid-feedback">Select a concern.</div>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label" for="fDoctor">Doctor</label>
+              <select class="form-select" id="fDoctor" required></select>
+              <div class="invalid-feedback">Select a doctor.</div>
+            </div>
+            <div class="col-md-3 col-6">
+              <label class="form-label" for="fDate">Date</label>
+              <input class="form-control" id="fDate" type="date" required>
+              <div class="invalid-feedback" id="dateMsg">Pick a valid date.</div>
+            </div>
+            <div class="col-md-3 col-6">
+              <label class="form-label" for="fTime">Time</label>
+              <select class="form-select" id="fTime" required></select>
+              <div class="invalid-feedback">Select a time.</div>
+            </div>
+            <div class="col-12">
+              <label class="form-label" for="fMsg">Message (optional)</label>
+              <textarea class="form-control" id="fMsg" rows="3" maxlength="300"></textarea>
+            </div>
+            <div class="col-12">
+              <button class="btn btn-primary w-100" type="submit">Confirm Appointment</button>
+            </div>
+          </div>
+        </form>
+        <div id="formAlert" class="mt-3"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-light py-4">
+  <div class="container text-center small">
+    &copy; <span id="year"></span> Belleville Dental. For general education only, not medical advice.
+    <button class="btn btn-sm btn-outline-light ms-3" id="resetData">Reset saved data</button>
+  </div>
+</footer>
+
+<!-- TOPIC MODAL -->
+<div class="modal fade" id="topicModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="tmTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="tmBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="tmBook">Book for this concern</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ============ 1) JSON DATA (topics + publications) ============
+   Data badalne ke baad version ek barha dein. */
+const SEED = {
+  version: 4,
+  topics: [
+    { id:"implants", name:"Dental Implants", icon:"bi-wrench-adjustable",
+      summary:"Titanium and zirconia implants that replace missing tooth roots.",
+      details:"Our implant research looks at how the jawbone integrates with the implant (osseointegration), how long implants last, and how to lower the risk of peri-implant infection. We also study digitally guided placement for greater accuracy.",
+      points:["Bone integration and healing time","Risk factors such as smoking and uncontrolled diabetes","Peri-implant disease prevention","Digitally guided surgery"] },
+    { id:"gum", name:"Gum Disease", icon:"bi-droplet-half",
+      summary:"Prevention and treatment of gingivitis and periodontitis.",
+      details:"Gum disease starts with plaque biofilm and can progress to bone loss around the teeth. We study early detection, non-surgical therapy and the links between periodontal health and general conditions such as diabetes.",
+      points:["Plaque control and home-care habits","Scaling and root planing outcomes","Periodontal and diabetes connection","Long-term maintenance programs"] },
+    { id:"whitening", name:"Teeth Whitening", icon:"bi-stars",
+      summary:"Safe whitening methods that protect enamel and limit sensitivity.",
+      details:"We compare in-office and take-home peroxide systems for shade change, comfort and enamel safety, and test desensitizing agents that reduce post-treatment sensitivity.",
+      points:["Peroxide concentration versus sensitivity","Enamel surface effects","Desensitizing agents","Longevity of results"] },
+    { id:"oral-cancer", name:"Oral Cancer", icon:"bi-shield-plus",
+      summary:"Early screening and awareness for mouth and throat cancers.",
+      details:"Oral cancer is far more treatable when found early. Our work focuses on visual screening protocols, public awareness around tobacco, betel quid and areca nut use, and referral pathways for suspicious lesions.",
+      points:["Routine oral cancer screening","Tobacco, betel quid and areca nut risks","Recognising persistent ulcers and patches","Fast referral for biopsy"] },
+    { id:"ortho", name:"Orthodontics", icon:"bi-bezier2",
+      summary:"Braces and clear aligners for healthy, well-aligned bites.",
+      details:"We study treatment time, comfort and stability of braces and clear aligners, along with 3D digital treatment planning and retention strategies that keep teeth in place.",
+      points:["Braces versus clear aligners","Digital 3D treatment planning","Retainer protocols","Early interceptive treatment in children"] },
+    { id:"decay", name:"Tooth Decay", icon:"bi-shield-check",
+      summary:"Prevention and minimally invasive treatment of cavities.",
+      details:"Decay is largely preventable. Our research covers fluoride use, fissure sealants, dietary sugar habits and minimally invasive approaches that preserve as much natural tooth as possible.",
+      points:["Fluoride and remineralisation","Fissure sealants in children","Diet and sugar frequency","Minimally invasive restorations"] }
+  ],
+  publications: [
+    { id:"p1",  title:"Early Bone Healing Around Immediately Placed Implants", topic:"implants", authors:["d2","d4"], year:2025, journal:"Journal of Clinical Implant Research", abstract:"A 24-month follow-up of implant stability in 120 sites placed with digital guides." },
+    { id:"p2",  title:"Peri-Implant Health in Patients with Type 2 Diabetes", topic:"implants", authors:["d2","d1"], year:2023, journal:"International Review of Oral Implantology", abstract:"Compares peri-implant inflammation between controlled and uncontrolled diabetic patients." },
+    { id:"p3",  title:"Non-Surgical Therapy Outcomes in Stage II-III Periodontitis", topic:"gum", authors:["d1"], year:2025, journal:"Periodontal Practice Journal", abstract:"Evaluates pocket depth reduction six months after scaling and root planing." },
+    { id:"p4",  title:"Gum Health and Blood Sugar Control: A Clinic-Based Study", topic:"gum", authors:["d1","d6"], year:2022, journal:"Journal of Oral & Systemic Health", abstract:"Examines how periodontal treatment relates to HbA1c changes in adults." },
+    { id:"p5",  title:"Sensitivity After Home vs In-Office Whitening", topic:"whitening", authors:["d5"], year:2024, journal:"Aesthetic Dentistry Letters", abstract:"Randomised comparison of two peroxide protocols and a desensitizing gel." },
+    { id:"p6",  title:"Enamel Surface Changes After Repeated Whitening Cycles", topic:"whitening", authors:["d5","d1"], year:2021, journal:"Dental Materials Reports", abstract:"Laboratory study measuring enamel roughness and microhardness." },
+    { id:"p7",  title:"Visual Screening for Oral Potentially Malignant Disorders", topic:"oral-cancer", authors:["d4","d6"], year:2025, journal:"Oral Oncology Practice", abstract:"Assesses the accuracy of a structured clinical screening checklist in general practice." },
+    { id:"p8",  title:"Awareness of Betel Quid and Areca Nut Risks in Urban Communities", topic:"oral-cancer", authors:["d6","d4"], year:2023, journal:"Public Oral Health Review", abstract:"Survey of knowledge and habits across community health visits." },
+    { id:"p9",  title:"Clear Aligners vs Fixed Braces: Treatment Time and Comfort", topic:"ortho", authors:["d3"], year:2024, journal:"Orthodontic Research Quarterly", abstract:"Prospective comparison of treatment duration and patient-reported comfort." },
+    { id:"p10", title:"Retainer Compliance and Long-Term Stability", topic:"ortho", authors:["d3","d6"], year:2022, journal:"Orthodontic Research Quarterly", abstract:"Looks at relapse rates over three years using fixed and removable retainers." },
+    { id:"p11", title:"Fissure Sealants and Cavity Prevention in Schoolchildren", topic:"decay", authors:["d6","d5"], year:2025, journal:"Paediatric & Preventive Dentistry Journal", abstract:"School-based trial of sealant retention and new cavity rates." },
+    { id:"p12", title:"Minimally Invasive Treatment of Early Cavities", topic:"decay", authors:["d5","d1"], year:2023, journal:"Journal of Conservative Dentistry Research", abstract:"Follow-up of resin infiltration and fluoride varnish for early lesions." }
+  ]
+};
+
+/* ============ 2) LOCAL STORAGE ============ */
+const KEY_DB = "bd_db_v4";
+const KEY_APPT = "bd_appts_v1";
+function load(k, fb){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : fb; }catch(e){ return fb; } }
+function save(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+
+let DB = load(KEY_DB, null);
+if(!DB || DB.version !== SEED.version){ DB = SEED; save(KEY_DB, DB); }
+let APPTS = load(KEY_APPT, []);
+
+/* ============ 3) HELPERS ============ */
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const topicById = id => DB.topics.find(t => t.id === id);
+
+/* Doctors HTML cards se automatically read hote hain */
+const DOCTORS = [...document.querySelectorAll(".doc")].map(c => ({
+  id: c.dataset.id,
+  name: c.querySelector(".doc-name").textContent.trim(),
+  topics: (c.dataset.topics || "").split(",").map(s => s.trim()).filter(Boolean)
+}));
+const docById = id => DOCTORS.find(d => d.id === id);
+
+/* ============ 4) TOPICS ============ */
+function renderTopics(){
+  $("#topicGrid").innerHTML = DB.topics.map(t => `
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100 topic-card" data-topic="${t.id}">
+        <div class="card-body">
+          <h3 class="h2 text-primary"><i class="bi ${t.icon}"></i></h3>
+          <h5 class="card-title">${esc(t.name)}</h5>
+          <p class="card-text text-muted">${esc(t.summary)}</p>
+          <span class="text-primary small">Read more &rarr;</span>
+        </div>
+      </div>
+    </div>`).join("");
+}
+function openTopic(id){
+  const t = topicById(id); if(!t) return;
+  const pubs = DB.publications.filter(p => p.topic === id);
+  const docs = DOCTORS.filter(d => d.topics.includes(id));
+  $("#tmTitle").textContent = t.name;
+  $("#tmBody").innerHTML = `
+    <p>${esc(t.details)}</p>
+    <h6 class="fw-bold">Key research areas</h6>
+    <ul>${t.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
+    <h6 class="fw-bold">Related publications (${pubs.length})</h6>
+    <ul class="small">${pubs.map(p => `<li>${esc(p.title)} (${p.year})</li>`).join("")}</ul>
+    <h6 class="fw-bold">Doctors working on this</h6>
+    <p class="small">${docs.map(d => esc(d.name)).join(", ")}</p>`;
+  $("#tmBook").dataset.topic = id;
+  bootstrap.Modal.getOrCreateInstance($("#topicModal")).show();
+}
+
+/* ============ 5) PUBLICATIONS ============ */
+function fillPubFilter(){
+  $("#pubTopic").innerHTML = `<option value="all">All topics</option>` +
+    DB.topics.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join("");
+}
+function renderPubs(){
+  const q = $("#pubSearch").value.trim().toLowerCase();
+  const tp = $("#pubTopic").value;
+  const sort = $("#pubSort").value;
+  const list = DB.publications.filter(p => {
+    const names = p.authors.map(a => (docById(a)||{}).name || "").join(" ");
+    const hay = (p.title + " " + p.journal + " " + names).toLowerCase();
+    return (tp === "all" || p.topic === tp) && (!q || hay.includes(q));
+  }).sort((a,b) => sort === "new" ? b.year - a.year : a.year - b.year);
+
+  $("#pubEmpty").classList.toggle("d-none", list.length > 0);
+  $("#pubGrid").innerHTML = list.map(p => {
+    const authors = p.authors.map(a => (docById(a)||{}).name).filter(Boolean).join(", ");
+    return `
+    <div class="col-md-6 col-lg-4">
+      <div class="card h-100"><div class="card-body">
+        <span class="badge bg-primary mb-2">${esc((topicById(p.topic)||{}).name || "")}</span>
+        <span class="small text-muted float-end">${p.year}</span>
+        <h6 class="card-title">${esc(p.title)}</h6>
+        <p class="small text-muted">${esc(p.abstract)}</p>
+        <div class="small">${esc(authors)}</div>
+        <div class="small text-muted">${esc(p.journal)}</div>
+      </div></div>
+    </div>`;
+  }).join("");
+}
+
+/* ============ 6) APPOINTMENTS ============ */
+const SLOTS = ["09:00","10:00","11:00","12:00","14:00","15:00","16:00","17:00"];
+const fmtTime = t => { const [h,m] = t.split(":").map(Number); return `${((h+11)%12)+1}:${String(m).padStart(2,"0")} ${h>=12?"PM":"AM"}`; };
+const todayStr = () => { const d = new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+
+function fillBookingSelects(){
+  $("#fTopic").innerHTML = `<option value="">Choose...</option>` + DB.topics.map(t => `<option value="${t.id}">${esc(t.name)}</option>`).join("");
+  $("#fDoctor").innerHTML = `<option value="">Choose...</option>` + DOCTORS.map(d => `<option value="${d.id}">${esc(d.name)}</option>`).join("");
+  $("#fDate").min = todayStr();
+  refreshSlots();
+}
+function refreshSlots(){
+  const date = $("#fDate").value, doc = $("#fDoctor").value;
+  const taken = APPTS.filter(a => a.date === date && a.doctor === doc).map(a => a.time);
+  const now = new Date();
+  $("#fTime").innerHTML = `<option value="">Time</option>` + SLOTS.map(s => {
+    let disabled = taken.includes(s);
+    if(date === todayStr()){ const [h] = s.split(":").map(Number); if(h <= now.getHours()) disabled = true; }
+    return `<option value="${s}" ${disabled?"disabled":""}>${fmtTime(s)}${taken.includes(s)?" (booked)":""}</option>`;
+  }).join("");
+}
+function renderAppts(){
+  const box = $("#apptList");
+  if(!APPTS.length){ box.innerHTML = `<div class="text-muted small">No bookings yet.</div>`; return; }
+  const sorted = [...APPTS].sort((a,b) => (a.date+a.time).localeCompare(b.date+b.time));
+  box.innerHTML = sorted.map(a => `
+    <div class="card card-body d-flex flex-row justify-content-between align-items-start small">
+      <div>
+        <strong>${esc(a.name)}</strong> <span class="text-muted">#${esc(a.id)}</span><br>
+        ${esc((docById(a.doctor)||{}).name || "Doctor")} &bull; ${esc((topicById(a.topic)||{}).name || "")}<br>
+        <span class="text-primary">${esc(a.date)} at ${fmtTime(a.time)}</span>
+      </div>
+      <button class="btn btn-sm btn-outline-danger" data-cancel="${esc(a.id)}">Cancel</button>
+    </div>`).join("");
+}
+function showAlert(type, html){
+  $("#formAlert").innerHTML = `<div class="alert alert-${type}">${html}</div>`;
+}
+
+/* ============ 7) EVENTS ============ */
+document.addEventListener("click", e => {
+  const card = e.target.closest(".topic-card");
+  if(card) openTopic(card.dataset.topic);
+
+  const bookDoc = e.target.closest("[data-book-doc]");
+  if(bookDoc){
+    $("#fDoctor").value = bookDoc.dataset.bookDoc;
+    refreshSlots();
+    $("#appointment").scrollIntoView({ behavior:"smooth" });
+  }
+
+  if(e.target.closest("#tmBook")){
+    const t = $("#tmBook").dataset.topic;
+    if(t) $("#fTopic").value = t;
+    const modalEl = $("#topicModal");
+    modalEl.addEventListener("hidden.bs.modal", () => {
+      $("#appointment").scrollIntoView({ behavior:"smooth" });
+    }, { once:true });
+    bootstrap.Modal.getInstance(modalEl).hide();
+  }
+
+  const cancel = e.target.closest("[data-cancel]");
+  if(cancel && confirm("Cancel this appointment?")){
+    APPTS = APPTS.filter(a => a.id !== cancel.dataset.cancel);
+    save(KEY_APPT, APPTS); renderAppts(); refreshSlots();
+  }
+});
+
+["pubSearch","pubTopic","pubSort"].forEach(id => $("#"+id).addEventListener("input", renderPubs));
+$("#fDate").addEventListener("change", refreshSlots);
+$("#fDoctor").addEventListener("change", refreshSlots);
+
+$("#apptForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const form = e.target;
+  const dateVal = $("#fDate").value;
+  const isSunday = dateVal && new Date(dateVal + "T00:00").getDay() === 0;
+  $("#fDate").setCustomValidity(isSunday ? "closed" : (dateVal && dateVal < todayStr() ? "past" : ""));
+  $("#dateMsg").textContent = isSunday ? "We are closed on Sundays." : "Pick a valid date.";
+  if(!form.checkValidity()){ form.classList.add("was-validated"); return; }
+
+  const clash = APPTS.some(a => a.date === dateVal && a.doctor === $("#fDoctor").value && a.time === $("#fTime").value);
+  if(clash){ showAlert("danger", "That slot was just taken. Choose another time."); refreshSlots(); return; }
+
+  const appt = {
+    id: Math.random().toString(36).slice(2,8).toUpperCase(),
+    name: $("#fName").value.trim(),
+    phone: $("#fPhone").value.trim(),
+    email: $("#fEmail").value.trim(),
+    topic: $("#fTopic").value,
+    doctor: $("#fDoctor").value,
+    date: dateVal,
+    time: $("#fTime").value,
+    message: $("#fMsg").value.trim(),
+    createdAt: new Date().toISOString()
+  };
+  APPTS.push(appt); save(KEY_APPT, APPTS);
+  form.reset(); form.classList.remove("was-validated");
+  refreshSlots(); renderAppts();
+  showAlert("success", `<strong>Booked!</strong> Reference #${appt.id} &mdash; ${esc((docById(appt.doctor)||{}).name)} on ${esc(appt.date)} at ${fmtTime(appt.time)}.`);
+});
+
+$("#clearAppts").addEventListener("click", () => {
+  if(APPTS.length && confirm("Delete all bookings?")){ APPTS = []; save(KEY_APPT, APPTS); renderAppts(); refreshSlots(); }
+});
+$("#resetData").addEventListener("click", () => {
+  if(confirm("Reset saved data and bookings?")){ localStorage.removeItem(KEY_DB); localStorage.removeItem(KEY_APPT); location.reload(); }
+});
+
+/* ============ 8) INIT ============ */
+$("#year").textContent = new Date().getFullYear();
+renderTopics(); fillPubFilter(); renderPubs(); fillBookingSelects(); renderAppts();
+</script>
+</body>
+</html>
